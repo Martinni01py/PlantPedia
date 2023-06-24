@@ -57,7 +57,7 @@ class Especies(models.Model):
 class EspeciesMinerais(models.Model):
     especie = models.ForeignKey(Especies, on_delete=models.CASCADE)
     mineral = models.ForeignKey(Minerais, on_delete=models.CASCADE)
-    quantidade = models.IntegerField()
+    quantidade = models.CharField(max_length=100, null=True)
 
 class Plantas(models.Model):
     especie = models.ForeignKey(Especies, on_delete=models.CASCADE)

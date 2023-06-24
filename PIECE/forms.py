@@ -1,7 +1,7 @@
 # forms.py
 
 from django import forms
-from .models import Especies, Plantas, Minerais,Estacao,Solo,PH,Irrigacao,ExposicaoSolar
+from .models import Especies, Plantas, Minerais,Estacao,Solo,PH,Irrigacao,ExposicaoSolar,EspeciesMinerais
 
 class EspeciesForm(forms.ModelForm):
     class Meta:
@@ -67,12 +67,11 @@ class SolForm(forms.ModelForm):
             'icon_exposicaosolar',
         )
         
-class CadastroEspecieMineralForm(forms.Form):
-    especie = forms.ModelChoiceField(queryset=Especies.objects.all())
-    mineral = forms.ModelChoiceField(queryset=Minerais.objects.all())
-    quantidade = forms.DecimalField()
-
-    def save(self):
-        especie = self.cleaned_data['especie']
-        mineral = self.cleaned_data['mineral']
-        quantidade = self.cleaned_data['quantidade']
+class CadastroEspecieMineralForm(forms.ModelForm):
+    class Meta: 
+        model = EspeciesMinerais
+        fields = (
+            'especie',
+            'mineral',
+            'quantidade',
+        )

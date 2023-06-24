@@ -1,6 +1,7 @@
 {% load static %}
 <html lang="english">
-  <head>
+  {% block Head %} 
+<head>
     <title>exported project</title>
     {% load bootstrap5 %}
     {% bootstrap_css %}
@@ -40,6 +41,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/' %}{{ theme }}">
   </head>
+  {% endblock %}
   {% block content %}
   <body>
     <div>

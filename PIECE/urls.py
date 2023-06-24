@@ -10,6 +10,7 @@ urlpatterns = [
     path('ph/', views.CadPH, name="Cadastro de ph"),
     path('solo/', views.CadSolo, name="Cadastro de solo"),    
     path('sol/', views.CadSol, name="Cadastro de sol"),   
+    path('espmin', views.Cadminesp, name="Cadastro de Espmin"),     
     path('irriga/', views.Cadirriga, name="Cadastro de irrigacao"),
     path('buscar_especie/', views.buscar_especie, name='buscar_especie'),
     path('perfil_especie/<int:pk>/', views.perfil_especie, name='perfil_especie'),

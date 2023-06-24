@@ -1,5 +1,6 @@
 .plantas-card-gallery-card {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   border-radius: 16px;

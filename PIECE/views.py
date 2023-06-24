@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import EspeciesForm, PlantasForm, MineraisForm,EstacaoForm,PHform,soloForm,IrrigacaoForm,SolForm
-from .models import Especies, EspeciesMinerais,Estacao,ExposicaoSolar,Solo,Irrigacao,PH
+from .forms import EspeciesForm, PlantasForm, MineraisForm,EstacaoForm,PHform,soloForm,IrrigacaoForm,SolForm,CadastroEspecieMineralForm
+from .models import Especies, EspeciesMinerais,Estacao,ExposicaoSolar,Solo,Irrigacao,PH,Minerais
 from django.http import HttpResponse
 from datetime import datetime
 
@@ -184,14 +184,7 @@ def Cadirriga(request):
         form = IrrigacaoForm()
     return render(request, 'cadastroIrrigacao.html', {'form': form, 'theme': theme})
 
-
-
-def buscar_especie(request):
-    especies = Especies.objects.all()
-    return render(request, 'buscarespe.html', {'especies': Especies})
-
-def perfil_especie(request, pk):
-    especie = get_object_or_404(Especies, pk=pk)
+def Cadminesp(request):
     current_datetime = datetime.now()
     current_month = current_datetime.month
 
@@ -204,5 +197,40 @@ def perfil_especie(request, pk):
         theme = 'verao.css'
     else:  # Outono 
         theme = 'outono.css'
-    return render(request, 'base_perfil_especies.html', {'theme': theme, 'especie': especie})
+    minerais = Minerais.objects.all()
+    especies = Especies.objects.all()
+
+     
+    if request.method == 'POST':
+        form = CadastroEspecieMineralForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save(commit=True)  # Adicionando o argumento commit=True
+            return redirect('Cadastro de Espmin')
+    else:
+        form = CadastroEspecieMineralForm()
+    
+
+    
+    return render(request, 'cadastroespecieminerio.html', {'especies': especies, 'minerais': minerais,'theme': theme, 'form': form })
+
+def buscar_especie(request):
+    especies = Especies.objects.all()
+    return render(request, 'buscarespe.html', {'especies': Especies})
+
+def perfil_especie(request, pk):
+    especie = get_object_or_404(Especies, pk=pk)
+    minerais = especie.especiesminerais_set.all()
+    current_datetime = datetime.now()
+    current_month = current_datetime.month
+
+    # Determinar a estação com base no mês atual
+    if current_month in [6, 7, 8, 9]:  # Inverno 
+        theme = 'inverno.css'
+    elif current_month in [10, 11,12]:  # Primavera 
+        theme = 'primavera.css'
+    elif current_month in [1, 2, 3]:  # Verão 
+        theme = 'verao.css'
+    else:  # Outono 
+        theme = 'outono.css'
+    return render(request, 'base_perfil_especies.html', {'theme': theme, 'especie': especie, 'minerais': minerais})
     
