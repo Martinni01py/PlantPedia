@@ -1,0 +1,89 @@
+.component1-container {
+  width: 649.046875px;
+  height: 199.421875px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.component1-rectangle5 {
+  top: 0px;
+  left: 0px;
+  width: 148px;
+  height: 91px;
+  padding: var(--dl-space-space-halfunit);
+  position: absolute;
+  border-color: transparent;
+  border-radius: 10px;
+}
+.component1-rectangle6 {
+  top: 0px;
+  left: 167.671875px;
+  width: 148px;
+  height: 91px;
+  padding: var(--dl-space-space-halfunit);
+  position: absolute;
+  border-color: transparent;
+  border-radius: 10px;
+}
+.component1-rectangle7 {
+  top: 0px;
+  right: 167.671875px;
+  width: 148px;
+  height: 91px;
+  padding: var(--dl-space-space-halfunit);
+  position: absolute;
+  border-color: transparent;
+  border-radius: 10px;
+}
+.component1-rectangle8 {
+  top: 0px;
+  right: 0px;
+  width: 148px;
+  height: 91px;
+  padding: var(--dl-space-space-halfunit);
+  position: absolute;
+  border-color: transparent;
+  border-radius: 10px;
+}
+.component1-rectangle9 {
+  left: 0px;
+  width: 148px;
+  bottom: 0px;
+  height: 91px;
+  padding: var(--dl-space-space-halfunit);
+  position: absolute;
+  border-color: transparent;
+  border-radius: 10px;
+}
+.component1-rectangle10 {
+  left: 167.671875px;
+  width: 148px;
+  bottom: 0px;
+  height: 91px;
+  padding: var(--dl-space-space-halfunit);
+  position: absolute;
+  border-color: transparent;
+  border-radius: 10px;
+}
+.component1-rectangle11 {
+  right: 167.671875px;
+  width: 148px;
+  bottom: 0px;
+  height: 91px;
+  padding: var(--dl-space-space-halfunit);
+  position: absolute;
+  border-color: transparent;
+  border-radius: 10px;
+}
+.component1-rectangle12 {
+  right: 0px;
+  width: 148px;
+  bottom: 0px;
+  height: 91px;
+  padding: var(--dl-space-space-halfunit);
+  position: absolute;
+  border-color: transparent;
+  border-radius: 10px;
+}

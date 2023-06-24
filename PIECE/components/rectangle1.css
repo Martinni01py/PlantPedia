@@ -1,0 +1,11 @@
+.rectangle1-container {
+  display: flex;
+  position: relative;
+}
+.rectangle1-rectangle1 {
+  width: 722px;
+  height: 337px;
+  position: relative;
+  border-color: transparent;
+  border-radius: 9px;
+}

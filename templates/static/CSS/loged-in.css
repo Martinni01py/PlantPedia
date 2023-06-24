@@ -1,0 +1,190 @@
+.logedin-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.logedin-navbar {
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  padding-top: var(--dl-space-space-twounits);
+  padding-left: var(--dl-space-space-threeunits);
+  padding-right: var(--dl-space-space-threeunits);
+  padding-bottom: var(--dl-space-space-twounits);
+  justify-content: space-between;
+  background-color: #F2821A;
+}
+.logedin-image {
+  width: 60px;
+  height: 46px;
+  object-fit: cover;
+}
+.logedin-desktop-menu {
+  display: flex;
+}
+.logedin-nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.logedin-navlink {
+  text-decoration: none;
+}
+.logedin-text {
+  margin-left: var(--dl-space-space-twounits);
+}
+.logedin-text01 {
+  margin-left: var(--dl-space-space-twounits);
+}
+.logedin-text02 {
+  margin-left: var(--dl-space-space-twounits);
+}
+.logedin-btn-group {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.logedin-login {
+  border-width: 0px;
+  margin-right: var(--dl-space-space-twounits);
+  text-decoration: none;
+}
+.logedin-burger-menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.logedin-icon {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.logedin-mobile-menu {
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  padding: 32px;
+  z-index: 100;
+  position: fixed;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.logedin-nav1 {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.logedin-container1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--dl-space-space-threeunits);
+  justify-content: space-between;
+}
+.logedin-image1 {
+  height: 2rem;
+}
+.logedin-menu-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logedin-icon02 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+.logedin-nav2 {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.logedin-text03 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.logedin-text04 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.logedin-text05 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.logedin-text06 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.logedin-text07 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.logedin-text08 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.logedin-text09 {
+  margin-bottom: var(--dl-space-space-unit);
+}
+.logedin-container2 {
+  flex: 0 0 auto;
+  width: auto;
+  display: flex;
+  margin-top: var(--dl-space-space-unit);
+  align-items: center;
+  flex-direction: row;
+}
+.logedin-login1 {
+  margin-right: var(--dl-space-space-twounits);
+}
+.logedin-icon-group {
+  display: flex;
+}
+.logedin-icon04 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.logedin-icon06 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+  margin-right: var(--dl-space-space-twounits);
+}
+.logedin-icon08 {
+  width: var(--dl-size-size-xsmall);
+  height: var(--dl-size-size-xsmall);
+}
+@media(max-width: 767px) {
+  .logedin-navbar {
+    padding-left: var(--dl-space-space-twounits);
+    padding-right: var(--dl-space-space-twounits);
+  }
+  .logedin-desktop-menu {
+    display: none;
+  }
+  .logedin-text {
+    margin-left: var(--dl-space-space-unit);
+  }
+  .logedin-text01 {
+    margin-left: var(--dl-space-space-unit);
+  }
+  .logedin-text02 {
+    margin-left: var(--dl-space-space-unit);
+  }
+  .logedin-btn-group {
+    display: none;
+  }
+  .logedin-burger-menu {
+    display: flex;
+  }
+}
+@media(max-width: 479px) {
+  .logedin-navbar {
+    padding: var(--dl-space-space-unit);
+  }
+  .logedin-mobile-menu {
+    padding: 16px;
+  }
+}

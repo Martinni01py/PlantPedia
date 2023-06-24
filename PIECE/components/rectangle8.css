@@ -1,0 +1,11 @@
+.rectangle8-container {
+  display: flex;
+  position: relative;
+}
+.rectangle8-rectangle8 {
+  width: 355px;
+  height: 153px;
+  position: relative;
+  border-color: transparent;
+  border-radius: 9px;
+}

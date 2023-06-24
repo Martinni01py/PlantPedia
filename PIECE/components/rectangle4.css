@@ -1,0 +1,11 @@
+.rectangle4-container {
+  display: flex;
+  position: relative;
+}
+.rectangle4-rectangle4 {
+  width: 355px;
+  height: 240px;
+  position: relative;
+  border-color: transparent;
+  border-radius: 10px;
+}
