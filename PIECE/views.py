@@ -1,37 +1,36 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import EspeciesForm, PlantasForm, MineraisForm,EstacaoForm,PHform,soloForm,IrrigacaoForm,SolForm,CadastroEspecieMineralForm
+from django.contrib.auth import authenticate, login as auth_login
+from .forms import EspeciesForm, PlantasForm, MineraisForm,EstacaoForm,PHform,soloForm,IrrigacaoForm,SolForm,CadastroEspecieMineralForm, RegistrationForm, LoginForm
 from .models import Especies, EspeciesMinerais,Estacao,ExposicaoSolar,Solo,Irrigacao,PH,Minerais
 from django.http import HttpResponse
 from datetime import datetime
 
+def Theme():
+    current_datetime = datetime.now()
+    current_month = current_datetime.month
+
+    # Determinar a estação com base no mês atual
+    if current_month in [6, 7, 8, 9]:  # Inverno 
+        theme = 'inverno.css'
+    elif current_month in [10, 11,12]:  # Primavera 
+        theme = 'primavera.css'
+    elif current_month in [1, 2, 3]:  # Verão 
+        theme = 'verao.css'
+    else:  # Outono 
+        theme = 'outono.css'
+    
+    return theme
+    
+    
+
 def homepage(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
+    theme = Theme()
+    especies = Especies.objects.all()
 
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
 
-    return render(request, 'index.html', {'theme': theme})
+    return render(request, 'index.html', {'especies': especies ,'theme': theme})
 def Cad(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     estacoes = Estacao.objects.all()
     solos = Solo.objects.all()
     exposicaoSolar = ExposicaoSolar.objects.all()
@@ -53,18 +52,7 @@ def Cad(request):
     return render(request, 'cadastroespecie.html', {'phs': phs, 'solos': solos, 'exposicaoSolar': exposicaoSolar, 'irrigacoes': irrigacoes, 'estacoes': estacoes, 'theme': theme, 'form': form })
 
 def Cadmin(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     if request.method == 'POST':
         form = MineraisForm(request.POST, request.FILES)
         if form.is_valid():
@@ -75,18 +63,7 @@ def Cadmin(request):
     return render(request, 'cadastrominerais.html', {'form': form, 'theme': theme})
 
 def Cadest(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     if request.method == 'POST':
         form = EstacaoForm(request.POST, request.FILES)
         if form.is_valid():
@@ -97,18 +74,7 @@ def Cadest(request):
     return render(request, 'cadastroestacao.html', {'form': form, 'theme': theme})
 
 def CadSolo(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     if request.method == 'POST':
         form = soloForm(request.POST, request.FILES)
         if form.is_valid():
@@ -119,18 +85,7 @@ def CadSolo(request):
     return render(request, 'cadastrosolo.html', {'form': form, 'theme': theme})
 
 def CadSol(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     if request.method == 'POST':
         form = SolForm(request.POST, request.FILES)
         if form.is_valid():
@@ -141,18 +96,7 @@ def CadSol(request):
     return render(request, 'cadastroSol.html', {'form': form, 'theme': theme})
 
 def CadPH(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     if request.method == 'POST':
         form = PHform(request.POST, request.FILES)
         if form.is_valid():
@@ -163,18 +107,7 @@ def CadPH(request):
     return render(request, 'cadastroph.html', {'form': form, 'theme': theme})
 
 def Cadirriga(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     if request.method == 'POST':
         form = IrrigacaoForm(request.POST, request.FILES)
         if form.is_valid():
@@ -185,18 +118,7 @@ def Cadirriga(request):
     return render(request, 'cadastroIrrigacao.html', {'form': form, 'theme': theme})
 
 def Cadminesp(request):
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     minerais = Minerais.objects.all()
     especies = Especies.objects.all()
 
@@ -220,17 +142,34 @@ def buscar_especie(request):
 def perfil_especie(request, pk):
     especie = get_object_or_404(Especies, pk=pk)
     minerais = especie.especiesminerais_set.all()
-    current_datetime = datetime.now()
-    current_month = current_datetime.month
-
-    # Determinar a estação com base no mês atual
-    if current_month in [6, 7, 8, 9]:  # Inverno 
-        theme = 'inverno.css'
-    elif current_month in [10, 11,12]:  # Primavera 
-        theme = 'primavera.css'
-    elif current_month in [1, 2, 3]:  # Verão 
-        theme = 'verao.css'
-    else:  # Outono 
-        theme = 'outono.css'
+    theme = Theme()
     return render(request, 'base_perfil_especies.html', {'theme': theme, 'especie': especie, 'minerais': minerais})
     
+def register(request):
+    theme = Theme()
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = RegistrationForm()
+    return render(request, 'register.html', {'theme': theme, 'form': form})
+
+def login(request):
+    theme = Theme()
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(request, email=email, password=password)
+            print(user)
+            if user is not None:
+                auth_login(request, user)
+                return redirect('homepage')
+            else:
+                form.add_error(None, 'Credenciais inválidas.')
+    else:
+        form = LoginForm()
+    return render(request, 'login.html', {'theme': theme, 'form': form})

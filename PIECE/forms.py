@@ -1,8 +1,18 @@
 # forms.py
 
 from django import forms
-from .models import Especies, Plantas, Minerais,Estacao,Solo,PH,Irrigacao,ExposicaoSolar,EspeciesMinerais
+from .models import Especies, Plantas, Minerais,Estacao,Solo,PH,Irrigacao,ExposicaoSolar,EspeciesMinerais,User
+from django.contrib.auth.forms import UserCreationForm
 
+class RegistrationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('nome', 'email', 'password1', 'password2')
+
+class LoginForm(forms.Form):
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    
 class EspeciesForm(forms.ModelForm):
     class Meta:
         model = Especies

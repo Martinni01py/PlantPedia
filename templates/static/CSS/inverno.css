@@ -1145,16 +1145,17 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 16px;
 }
 .plantas-card-text {
-  align-self: flex-start;
+  align-self: center;
   margin-top: var(--dl-space-space-halfunit);
   font-weight: 600;
   margin-bottom: var(--dl-space-space-halfunit);
 }
 .plantas-card-text1 {
   color: var(--dl-color-gray-500);
-  align-self: flex-start;
+  align-self: center;
 }
 
 
@@ -1170,6 +1171,7 @@
 @media(max-width: 479px) {
   .plantas-card-image {
     height: 10rem;
+    border-radius: 16px;
   }
 }
 

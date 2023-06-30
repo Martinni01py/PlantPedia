@@ -1,19 +1,95 @@
 {% load static %}
 <html lang="english">
   <head>
-    {% block title %}<title>none</title>{% endblock %}
+    <title>Cadastrar Espécie</title>
     <link rel="icon" type="image/x-icon" href="{% static 'favi-icon\favicon.ico' %}">
     {% load bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <script type="texto/javascript" src="{% static 'JS/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/bootstrap.min.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
 
     <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      figure,
+      blockquote,
+      figcaption {
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        background-color: transparent;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
     <style data-tag="default-style-sheet">
       html {
@@ -24,20 +100,14 @@
       body {
         font-weight: 400;
         font-family: Amaranth;
-        font-style:normal;
+        font-style: normal;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
         line-height: 1.50;
         color: var(--dl-color-gray-black);
         background-color: var(--dl-color-gray-white);
-        cursor: url('{% static 'favi-icon\favicon-32x32.png' %}'), auto;
-
       }
-      input, select, label, button,form{
-        cursor: url('{% static 'favi-icon\favicon-32x32.png' %}'), auto;   
-       }
-      
     </style>
     <link
       rel="stylesheet"
@@ -46,15 +116,16 @@
     />
     <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css' %}">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Amaranth" />
-    <link rel="stylesheet" href="{% static 'CSS/' %}{{ theme }}">
   </head>
   <body>
-    {% block header %}
-      <div> 
+    <div>
+      <link rel="stylesheet" href="{% static 'css/' %}{{ theme }}">
+
+      <main class="homepage-container">
         <header data-thq="thq-navbar" class="homepage-navbar">
           <img
             alt="image"
-            src={% static 'favi-icon\tree.png' %}
+            src="https://play.teleporthq.io/static/svg/default-img.svg"
             class="homepage-image"
           />
           <div data-thq="thq-navbar-nav" data-role="Nav"  class="homepage-desktop-menu"
@@ -64,15 +135,15 @@
               data-role="Nav"
               class="homepage-nav"
             >
-              <a href="{% url 'homepage' %}" class="homepage-navlink">Espécies</a>
+              <a href="index.html" class="homepage-navlink">Home</a>
               <span class="homepage-text">Features</span>
               <span class="homepage-text01">Pricing</span>
               <span class="homepage-text02">Team</span>
             </nav>
           </div>
           <div data-thq="thq-navbar-btn-group" class="homepage-btn-group">
-            <a href="{% url 'login' %}" class="homepage-login button">Login</a>
-            <a href="{% url 'register' %}" class="homepage-register button">
+            <a href="login.html" class="homepage-login button">Login</a>
+            <a href="cadastro.html" class="homepage-register button">
               Register
             </a>
           </div>
@@ -139,98 +210,127 @@
                   d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
                 ></path>
               </svg>
-              
             </div>
           </div>
-        </header> 
-      </div>
-    {% endblock %}
-    {% block main %}
-      <main class="homepage-container">
-        <div class="homepage-inicio">
+        </header>
+          <div class="homepage-inicio">
           <div class="homepage-plantas">
-            <div
-              class="plantas-card-gallery-card plantas-card-root-class-name1"
-            >
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1579551053957-ee77f9b970c7?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDQ2fHx3b29kc3xlbnwwfHx8fDE2MjY0NDc1ODg&amp;ixlib=rb-1.2.1&amp;w=1000"
-                class="plantas-card-image"
-              />
-              <h2 class="plantas-card-text"><span>Project Title</span></h2>
-              <span class="plantas-card-text1">
-                <span>Lorem ipsum dolor sit amet</span>
-              </span>
-            </div>
-            <div class="plantas-card-gallery-card plantas-card-root-class-name">
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1579551053957-ee77f9b970c7?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDQ2fHx3b29kc3xlbnwwfHx8fDE2MjY0NDc1ODg&amp;ixlib=rb-1.2.1&amp;w=1000"
-                class="plantas-card-image"
-              />
-              <h2 class="plantas-card-text"><span>Project Title</span></h2>
-              <span class="plantas-card-text1">
-                <span>Lorem ipsum dolor sit amet</span>
-              </span>
-            </div>
-            <div
-              class="plantas-card-gallery-card plantas-card-root-class-name2"
-            >
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDN8fHdvb2RzfGVufDB8fHx8MTYyNjQ0NzU3Mw&amp;ixlib=rb-1.2.1&amp;w=1000"
-                class="plantas-card-image"
-              />
-              <h2 class="plantas-card-text"><span>Project Title</span></h2>
-              <span class="plantas-card-text1">
-                <span>Lorem ipsum dolor sit amet</span>
-              </span>
-            </div>
-            <div
-              class="plantas-card-gallery-card plantas-card-root-class-name3"
-            >
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1439853949127-fa647821eba0?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE4fHxuYXR1cmV8ZW58MHx8fHwxNjI2NDQ3ODAw&amp;ixlib=rb-1.2.1&amp;w=1000"
-                class="plantas-card-image"
-              />
-              <h2 class="plantas-card-text"><span>Project Title</span></h2>
-              <span class="plantas-card-text1">
-                <span>Lorem ipsum dolor sit amet</span>
-              </span>
-            </div>
-            <div
-              class="plantas-card-gallery-card plantas-card-root-class-name4"
-            >
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1529948723647-8b7bd77b441c?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDExfHxjbGlmZnxlbnwwfHx8fDE2MjY0NDc4MjQ&amp;ixlib=rb-1.2.1&amp;w=1000"
-                class="plantas-card-image"
-              />
-              <h2 class="plantas-card-text"><span>Project Title</span></h2>
-              <span class="plantas-card-text1">
-                <span>Lorem ipsum dolor sit amet</span>
-              </span>
-            </div>
-            <div
-              class="plantas-card-gallery-card plantas-card-root-class-name5"
-            >
-              <img
-                alt="image"
-                src="https://images.unsplash.com/photo-1553570739-330b8db8a925?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDI0fHxvY2VhbnxlbnwwfHx8fDE2MjY0NDc4ODQ&amp;ixlib=rb-1.2.1&amp;w=1000"
-                class="plantas-card-image"
-              />
-              <h2 class="plantas-card-text"><span>Project Title</span></h2>
-              <span class="plantas-card-text1">
-                <span>Lorem ipsum dolor sit amet</span>
-              </span>
-            </div>
+            <form class="form-horizontal alert alert-info" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+                         
+              
+              <!-- Form Name -->
+              <legend>Cadastrar espécie</legend>
+              
+              <!-- Text input-->
+              <div class="form-group row">
+                <div class="col-md-6">
+                
+                <input id="id_nome" name="nome" type="text"  placeholder="Nome Popular" class="form-control input-md" required="">
+                </div>  
+              
+                <!-- Text input-->
+               
+                <div class="col-md-6">
+                <input id="id_nome_cientifico" name="nome_cientifico" type="text" placeholder="Nome Cientifico" class="form-control input-md h1" required="">
+               
+              </div>
+              </div>
+              <pre></pre>
+              <!-- File Button --> 
+              <div class="form-group row">
+                
+                <div class="col-md-6">
+                  <label class="col-md-6 control-label " for="FOTO_FRUTO">Foto Fruto</label>
+                 
+                  <input id="id_imagem_fruta" name="imagem_fruta" class="col-md-4 input-file form-control input-md" type="file">
+                </div>
+             
+              
+                
+                <div class="col-md-6">
+                  <label class="col-md-6 control-label " for="Imagem">Foto espécie</label>
+                  
+                  <input id="id_imagem_especie" name="imagem_especie" class="col-md-4 input-file form-control input-md" type="file">
+                </div>
+              </div>
+              <pre> </pre>
+              <!-- Select Basic -->
+              <div class="form-group row">
+                <label class="col-md-6 control-label" for="Acidez_solo">Acidez do solo</label>
+                <div class="col-md-6">
+                  <select id="id_acidez_solo" name="acidez_solo" class="form-control">
+                    {% for PH in phs %}
+                    <option value="{{ PH.id }}">{{ PH.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              
+                <pre> </pre>
+              <!-- Select Basic -->
+              
+                <label class="col-md-6 control-label" for="necessidade_solo">Tipo de Solo</label>
+                <div class="col-md-6">
+                  <select id="id_necessidade_solo" name="necessidade_solo" class="form-control">
+                    {% for Solo in solos %}
+                    <option value="{{ Solo.id }}">{{ Solo.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <pre> </pre>
+              
+              <!-- Select Basic -->
+              <div class="form-group row">
+                <label class="col-md-6 control-label" for="estacao_producao">estações de produção</label>
+                <div class="col-md-6">
+                  <select id="id_estacao_producao" name="estacao_producao" class="form-control">
+                    {% for estacao in estacoes %}
+                    <option value="{{ estacao.id }}">{{ estacao.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              
+                <pre> </pre>
+              <!-- Select Basic -->
+              
+                <label class="col-md-6 control-label" for="exposicao_solar">Exposção Solar</label>
+                <div class="col-md-6">
+                  <select id="id_exposicao_solar" name="exposicao_solar" class="form-control">
+                    {% for ExposicaoSolar in exposicaoSolar %}
+                    <option value="{{ ExposicaoSolar.id }}">{{ ExposicaoSolar.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <pre> </pre>
+              <!-- Select Basic -->
+              <div class="form-group row">
+                <label class="col-md-6 control-label" for="irrigacao">Irrigação</label>
+                <div class="col-md-6">
+                  <select id="id_irrigacao" name="irrigacao" class="form-control">
+                    {% for Irrigacao in irrigacoes %}
+                    <option value="{{ Irrigacao.id }}">{{ Irrigacao.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              
+              
+              <pre> </pre>
+                <label class="col-md-4 row-md-6 control-label" for="Registrar"></label>
+                <div class="col-md-4 row-md-6">
+                  <button id="Registrar" name="Registrar" type="submit" class="btn btn-primary">Registrar</button>
+                </div>
+              </div>
+              
+              
+            
+              </form>
+              
           </div>
         </div>
-
       </main>
-      {% endblock %}
+    </div>
     <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
   </body>
-  
 </html>

@@ -1,0 +1,4 @@
+
+.custom-cursor {
+    cursor: url('{% static 'favi-icon\favicon-32x32.png' %}'), auto;
+}
