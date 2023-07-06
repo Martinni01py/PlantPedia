@@ -1,245 +1,508 @@
-<!DOCTYPE html>
-<html lang="english">
-  <head>
-    <title>homepage2 - exported project</title>
-    <meta property="og:title" content="homepage2 - exported project" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="utf-8" />
-    <meta property="twitter:card" content="summary_large_image" />
-
-    <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
-    </style>
-    <style data-tag="default-style-sheet">
-      html {
-        font-family: Inter;
-        font-size: 16px;
-      }
-
-      body {
-        font-weight: 400;
-        font-style:normal;
-        text-decoration: none;
-        text-transform: none;
-        letter-spacing: normal;
-        line-height: 1.15;
-        color: var(--dl-color-gray-black);
-        background-color: var(--dl-color-gray-white);
-
-      }
-    </style>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-      data-tag="font"
-    />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div>
-      <link href="./homepage2.css" rel="stylesheet" />
-
-      <div class="homepage2-container">
-        <header data-thq="thq-navbar" class="homepage2-navbar">
-          <img
-            alt="image"
-            src="https://play.teleporthq.io/static/svg/default-img.svg"
-            class="homepage2-image"
-          />
-          <div
-            data-thq="thq-navbar-nav"
-            data-role="Nav"
-            class="homepage2-desktop-menu"
-          >
-            <nav
-              data-thq="thq-navbar-nav-links"
-              data-role="Nav"
-              class="homepage2-nav"
-            >
-              <a href="index.html" class="homepage2-navlink">Home</a>
-              <span class="homepage2-text">Features</span>
-              <span class="homepage2-text01">Pricing</span>
-              <span class="homepage2-text02">Team</span>
-            </nav>
-          </div>
-          <div data-thq="thq-navbar-btn-group" class="homepage2-btn-group">
-            <a href="login.html" class="homepage2-login button">Login</a>
-            <a href="cadastro.html" class="homepage2-register button">
-              Register
-            </a>
-          </div>
-          <div data-thq="thq-burger-menu" class="homepage2-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="homepage2-icon">
-              <path
-                d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
-              ></path>
-            </svg>
-          </div>
-          <div data-thq="thq-mobile-menu" class="homepage2-mobile-menu">
+{% extends 'base.html' %}
+{% block title %}<title>{{ especie.nome }}</title>{% endblock %}
+{% block main %}
+  <div class="homepage-container">
+    <div class="header clearfix">
+      <nav style="background-color: #2A794A; border-radius:16px; text-color:#0000; padding:10px; margin-top:6px">
+        <ul class="nav nav-pills float-right">
+          <li class="nav-item">
+            <button id="nav-link-4" onclick="marcarBotao(4)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;">Status</button>
+          </li>
+          <li class="nav-item">
+            <button id="nav-link-2" onclick="marcarBotao(2)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;" >Manutenção</button>
+          </li>
+          <li class="nav-item">
+            <button id="nav-link-3" onclick="marcarBotao(3)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;" >Produção</button>
+          </li>
+          <li class="nav-item">
+            <button id="nav-link-1" onclick="marcarBotao(1)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;" >Info</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div id="status-div" name='status' class="homepage-galleryplanta additional-div hide" style="display: none;">
+      <div class="homepage-containercentralplanta">
+        <div class="homepage-containerimagemdetalhes">
+          <div class="homepage-imagem">
             <div
-              data-thq="thq-mobile-menu-nav"
-              data-role="Nav"
-              class="homepage2-nav1"
+              class="imagemplanta-gallery-card imagemplanta-root-class-name1"
             >
-              <div class="homepage2-container1">
-                <img
-                  alt="image"
-                  src="https://presentation-website-assets.teleporthq.io/logos/logo.png"
-                  class="homepage2-image1"
-                />
-                <div data-thq="thq-close-menu" class="homepage2-menu-close">
-                  <svg viewBox="0 0 1024 1024" class="homepage2-icon02">
-                    <path
-                      d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
-              <nav
-                data-thq="thq-mobile-menu-nav-links"
-                data-role="Nav"
-                class="homepage2-nav2"
-              >
-                <span class="homepage2-text03">About</span>
-                <span class="homepage2-text04">About</span>
-                <span class="homepage2-text05">About</span>
-                <span class="homepage2-text06">Features</span>
-                <span class="homepage2-text07">Pricing</span>
-                <span class="homepage2-text08">Team</span>
-                <span class="homepage2-text09">Blog</span>
-              </nav>
-              <div class="homepage2-container2">
-                <button class="homepage2-login1 button">Login</button>
-                <button class="button">Register</button>
-              </div>
-            </div>
-            <div class="homepage2-icon-group">
-              <svg
-                viewBox="0 0 950.8571428571428 1024"
-                class="homepage2-icon04"
-              >
-                <path
-                  d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
-                ></path></svg
-              ><svg
-                viewBox="0 0 877.7142857142857 1024"
-                class="homepage2-icon06"
-              >
-                <path
-                  d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
-                ></path></svg
-              ><svg
-                viewBox="0 0 602.2582857142856 1024"
-                class="homepage2-icon08"
-              >
-                <path
-                  d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
-                ></path>
-              </svg>
+            <img alt="Imagem da Espécie" src="{{ especie.imagem_especie.url }}" class="imagemplanta-image" id="imagem-especie">
+            <img alt="Imagem da Fruta" src="{{ especie.imagem_fruta.url }}" class="imagemplanta-image" id="imagem-fruta" style="display: none;">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#imagem-especie').click(function() {
+                        $('#imagem-especie').hide();
+                        $('#imagem-fruta').show();
+                    });
+            
+                    $('#imagem-fruta').click(function() {
+                        $('#imagem-fruta').hide();
+                        $('#imagem-especie').show();
+                    });
+                });
+            </script>
             </div>
           </div>
-        </header>
-        <div class="homepage2-galleryplanta">
-          <div class="homepage2-containercentralplanta">
-            <div class="homepage2-containerimagemdetalhes">
-              <div class="homepage2-imagem">
-                <div
-                  class="imagemplanta-gallery-card imagemplanta-root-class-name"
-                >
-                  <img
-                    alt="image"
-                    src="https://play.teleporthq.io/static/svg/default-img.svg"
-                    class="imagemplanta-image"
-                  />
-                </div>
-              </div>
-              <div class="homepage2-detalhes">
-                <div
-                  class="detalhes-testimonial-card detalhes-root-class-name2"
-                >
-                  <span class="detalhes-text"><span>NOME</span></span>
-                  <span class="detalhes-text1">
-                    <span>NOME_CIENTIFICO</span>
-                  </span>
-                  <span class="detalhes-text2"><span>DETALHES</span></span>
-                </div>
-              </div>
+          <div class="homepage-detalhes">
+            <div
+              class="detalhes-testimonial-card detalhes-root-class-name3"
+            >
+              <span class="detalhes-text">
+              <span>Nome: {{ especie.nome }}</span><br></br>
+              <span>Nome Cientifico: {{ especie.nome_cientifico }}</span>
+              </span>
+              <!--span class="detalhes-text2"><span>{{ especie.detalhes }}</span></span> --> 
             </div>
-            <div class="homepage2-mineraisgaleria">
-              <div class="homepage2-galleryminerais">
-                <div
-                  class="mineralcard-gallery-card mineralcard-root-class-name14"
-                >
-                  <img
-                    src="https://images.unsplash.com/photo-1418065460487-3e41a6c84dc5?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDEyfHxmb3Jlc3R8ZW58MHx8fHwxNjI2MjUxMjg4&amp;ixlib=rb-1.2.1&amp;h=1500"
-                    class="mineralcard-image"
-                  />
-                  <h2 class="mineralcard-text"><span>mg</span></h2>
-                </div>
+          </div>
+        </div>
+        <div class="homepage-mineraisgaleria">
+          
+          <div class="homepage-galleryminerais">
+            
+            {% for mineral in minerais %}
+            <div class="mineralcard-gallery-card mineralcard-root-class-name15">
+              <img src="{{ mineral.mineral.icon_mineral.url }}" class="mineralcard-image" alt={{ mineral.mineral.nome }} title={{mineral.mineral.nome }}   />
+              <h10 class="mineralcard-text">
+                <span>{{ mineral.quantidade }}</span>
+              </h10>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="homepage-containerplantassoloestacao">
+        <div class="homepage-containersolirrigacaoestacao">
+          <div class="homepage-containerestacao">
+            <div
+              class="estacaoproducao-testimonial-card estacaoproducao-root-class-name8"
+            >
+              <img
+                alt="{{ planta.estacao_producao.nome }}"
+                src={{ planta.estacao_producao.icon_estacao.url }}
+                class="estacaoproducao-image"
+              />
+              <div class="estacaoproducao-testimonial">
+                <span class="estacaoproducao-text"><span>{{ planta.estacao_producao }}</span></span>
               </div>
             </div>
           </div>
-          <div class="homepage2-containerplantassoloestacao">
-            <div class="homepage2-containersolirrigacaoestacao">
-              <div class="homepage2-containerestacao">
+          <div class="homepage-containerirrigacaosol">
+            <div
+              class="irrigaosol-testimonial-card irrigaosol-root-class-name8"
+            >
+              <div class="irrigaosol-testimonial">
+                <img
+                  alt="profile"
+                  src={{ planta.irrigacao.icon_irrigacao.url }}
+                  class="irrigaosol-image"
+                />
+                <span class="irrigaosol-text"><span>{{ planta.irrigacao }}</span></span>
+              </div>
+              <div class="irrigaosol-testimonial1">
+                <img
+                  alt="profile"
+                  class="irrigaosol-image1"
+                  src={{ planta.exposicao_solar_atual.icon_exposicaosolar.url}}/>
+                <span class="irrigaosol-text1"><span>{{ planta.exposicao_solar_atual }}</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="solo-testimonial-card solo-root-class-name5">
+          <div class="solo-testimonial">
+            <img
+              alt="profile"
+              src={{ planta.acidez_solo.icon_PH.url }}
+              class="solo-image"
+            />
+            <span class="solo-text col-6"><span> PH - {{ planta.acidez_solo }}</span></span>
+          </div>
+          <div class="solo-testimonial1">
+            <img
+              alt="profile"
+              src={{ planta.solo.icon_solo.url }}
+              class="solo-image1"
+            />
+            <span class="solo-text1 col-6"><span>Solo - {{ planta.solo }}</span></span>
+          </div>
+        </div>
+      </div>
+    </div>   
+    <div id="info-div" name='info' class="homepage-galleryplanta additional-div hide " style="display: none;">
+      <div class="homepage-containercentralplanta">
+        <div class="homepage-containerimagemdetalhes">
+          <div class="homepage-imagem">
+            <div
+              class="imagemplanta-gallery-card imagemplanta-root-class-name1"
+            >
+            <img alt="Imagem da Espécie" src="{{ especie.imagem_especie.url }}" class="imagemplanta-image" id="imagem-especie1">
+            <img alt="Imagem da Fruta" src="{{ especie.imagem_fruta.url }}" class="imagemplanta-image" id="imagem-fruta1" style="display: none;">
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('#imagem-especie1').click(function() {
+                        $('#imagem-especie1').hide();
+                        $('#imagem-fruta1').show();
+                    });
+            
+                    $('#imagem-fruta1').click(function() {
+                        $('#imagem-fruta1').hide();
+                        $('#imagem-especie1').show();
+                    });
+                });
+            </script>
+            </div>
+          </div>
+          <div class="homepage-detalhes">
+            <div
+              class="detalhes-testimonial-card detalhes-root-class-name3"
+            >
+              <span class="detalhes-text">
+              <span>Nome: {{ especie.nome }}</span><br></br>
+              <span>Nome Cientifico: {{ especie.nome_cientifico }}</span>
+              </span>
+              <!--span class="detalhes-text2"><span>{{ especie.detalhes }}</span></span> --> 
+            </div>
+          </div>
+        </div>
+        <div class="homepage-mineraisgaleria">
+          
+          <div class="homepage-galleryminerais">
+            
+            {% for mineral in minerais %}
+            <div class="mineralcard-gallery-card mineralcard-root-class-name15">
+              <img src="{{ mineral.mineral.icon_mineral.url }}" class="mineralcard-image" alt={{ mineral.mineral.nome }} title={{mineral.mineral.nome }}   />
+              <h10 class="mineralcard-text">
+                <span>{{ mineral.quantidade }}</span>
+              </h10>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="homepage-containerplantassoloestacao">
+        <div class="homepage-containersolirrigacaoestacao">
+          <div class="homepage-containerestacao">
+            <div
+              class="estacaoproducao-testimonial-card estacaoproducao-root-class-name8"
+            >
+              <img
+                alt="{{ especie.estacao_producao.nome }}"
+                src={{ especie.estacao_producao.icon_estacao.url }}
+                class="estacaoproducao-image"
+              />
+              <div class="estacaoproducao-testimonial">
+                <span class="estacaoproducao-text"><span>{{ especie.estacao_producao }}</span></span>
+              </div>
+            </div>
+          </div>
+          <div class="homepage-containerirrigacaosol">
+            <div
+              class="irrigaosol-testimonial-card irrigaosol-root-class-name8"
+            >
+              <div class="irrigaosol-testimonial">
+                <img
+                  alt="profile"
+                  src={{ especie.irrigacao.icon_irrigacao.url }}
+                  class="irrigaosol-image"
+                />
+                <span class="irrigaosol-text"><span>{{ especie.irrigacao }}</span></span>
+              </div>
+              <div class="irrigaosol-testimonial1">
+                <img
+                  alt="profile"
+                  src={{ especie.exposicao_solar.icon_exposicaosolar.url }}
+                  class="irrigaosol-image1"
+                />
+                <span class="irrigaosol-text1"><span>{{ especie.exposicao_solar }}</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="solo-testimonial-card solo-root-class-name5">
+          <div class="solo-testimonial">
+            <img
+              alt="profile"
+              src={{ especie.acidez_solo.icon_PH.url }}
+              class="solo-image"
+            />
+            <span class="solo-text col-6"><span> PH - {{ especie.acidez_solo }}</span></span>
+          </div>
+          <div class="solo-testimonial1">
+            <img
+              alt="profile"
+              src={{ especie.necessidade_solo.icon_solo.url }}
+              class="solo-image1"
+            />
+            <span class="solo-text1 col-6"><span>Solo - {{ especie.necessidade_solo }}</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="manutencao-div" name='manutencao' class="manutencao-container additional-div hide" style="display: none;">
+      <div data-thq="thq-navbar-nav" data-role="Nav" class="manutencao-planta">
+        <div class="manutencao-testimonial">
+          <div class="manutencao-container3">
+            <div class="manutencao-container4">
+              <div class="manutencao-container5">
                 <div
-                  class="estacaoproducao-testimonial-card estacaoproducao-root-class-name7"
+                  class="cadastrar-manutencao-testimonial-card cadastrar-manutencao-root-class-name"
                 >
-                  <img
-                    alt="profile"
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE0fHxwb3J0cmFpdHxlbnwwfHx8fDE2MjYzNzg5NzI&amp;ixlib=rb-1.2.1&amp;w=200"
-                    class="estacaoproducao-image"
-                  />
-                  <div class="estacaoproducao-testimonial">
-                    <span class="estacaoproducao-text"><span>verão</span></span>
+                  <h1 class="cadastrar-manutencao-text">
+                    <span>Atualizar</span>
+                  </h1>
+                  <div class="cadastrar-manutencao-container">
+                    <div class="cadastrar-manutencao-container1">
+                      <div class="cadastrar-manutencao-main-testimonial">
+                        <label class="cadastrar-manutencao-text1">
+                          <span>Data da última fertilização</span>
+                        </label>
+                        <input
+                          type="date"
+                          name="dt_ultima_fertilizacao"
+                          placeholder="Selecione a data"
+                          class="input"
+                        />
+                        
+                        <label class="cadastrar-manutencao-text1">
+                          <span>Data da última medição de pH</span>
+                        </label>
+                        <input
+                          type="date"
+                          name="ultima_medicao_ph"
+                          placeholder="Selecione a data"
+                          class="input"
+                        />
+                        
+                        <label class="cadastrar-manutencao-text1">
+                          <span>Data de plantio</span>
+                        </label>
+                        <input
+                          type="date"
+                          name="dt_plantio"
+                          placeholder="Selecione a data"
+                          class="input"
+                        />
+                        
+                        <label class="cadastrar-manutencao-text1">
+                          <span>Data da última poda</span>
+                        </label>
+                        <input
+                          type="date"
+                          name="dt_ultima_poda"
+                          placeholder="Selecione a data"
+                          class="input"
+                        />
+                      </div>
+                      <div class="cadastrar-manutencao-main-testimonial1">
+                        <div class="cadastrar-manutencao-testimonial3">
+                          <label class="cadastrar-manutencao-text4">
+                            <span>Exposicao Solar</span>
+                          </label>
+                          <select id="id_exposicao_solar_atual" name="exposicao_solar" class="form-control">
+                            <option value=""></option>
+                            {% for ExposicaoSolar in exposicaoSolar %}
+                            <option value="{{ ExposicaoSolar.id }}">{{ ExposicaoSolar.nome }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+            
+                        
+                        <div class="cadastrar-manutencao-testimonial4">
+                          <label class="cadastrar-manutencao-text5">
+                            <span>Solo Atual</span>
+                          </label>
+                          <select id="id_necessidade_solo" name="necessidade_solo" class="form-control">
+                            <option value=""></option>
+                            {% for Solo in solos %}
+                            <option value="{{ Solo.id }}">{{ Solo.nome }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                        <div class="cadastrar-manutencao-testimonial5">
+                          <label class="cadastrar-manutencao-text6">
+                            <span>Ph</span>
+                          </label>
+                          <select id="id_ultimo_ph" name="acidez_solo" class="form-control">
+                            <option value=""></option>
+                            {% for PH in phs %}
+                            <option value="{{ PH.id }}">{{ PH.nome }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                        <pre> </pre>
+                        <label class="col-md-4 row-md-6 control-label" for="Registrar"></label>
+                <div class="col-md-4 row-md-6">
+                  <button id="Registrar" name="Registrar" type="submit" class="btn btn-primary">Registrar</button>
+                </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="homepage2-containerirrigaosol">
-                <div
-                  class="irrigaosol-testimonial-card irrigaosol-root-class-name7"
-                >
-                  <div class="irrigaosol-testimonial">
-                    <img
-                      alt="profile"
-                      src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE0fHxwb3J0cmFpdHxlbnwwfHx8fDE2MjYzNzg5NzI&amp;ixlib=rb-1.2.1&amp;w=200"
-                      class="irrigaosol-image"
-                    />
-                    <span class="irrigaosol-text"><span>constante</span></span>
+              <div
+                class="ultima-manutencao-testimonial-card ultima-manutencao-root-class-name2"
+              >
+                <h1 class="ultima-manutencao-text"><span>Heading</span></h1>
+                <div class="ultima-manutencao-ultman">
+                  <div class="ultima-manutencao-side1">
+                    <div class="ultima-manutencao-testimonial">
+                      <span class="ultima-manutencao-text01">
+                        <span>John Doe</span>
+                      </span>
+                      <span class="ultima-manutencao-text02">
+                        <span>date</span>
+                      </span>
+                    </div>
+                    <div class="ultima-manutencao-testimonial1">
+                      <span class="ultima-manutencao-text03">
+                        <span>John Doe</span>
+                      </span>
+                      <span class="ultima-manutencao-text04">
+                        <span>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. In lorem lorem, malesuada in metus vitae,
+                          scelerisque accumsan ipsum.
+                        </span>
+                      </span>
+                    </div>
+                    <div class="ultima-manutencao-testimonial2">
+                      <span class="ultima-manutencao-text05">
+                        <span>John Doe</span>
+                      </span>
+                      <span class="ultima-manutencao-text06">
+                        <span>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. In lorem lorem, malesuada in metus vitae,
+                          scelerisque accumsan ipsum.
+                        </span>
+                      </span>
+                    </div>
+                    <div class="ultima-manutencao-testimonial3">
+                      <span class="ultima-manutencao-text07">
+                        <span>John Doe</span>
+                      </span>
+                      <span class="ultima-manutencao-text08">
+                        <span>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. In lorem lorem, malesuada in metus vitae,
+                          scelerisque accumsan ipsum.
+                        </span>
+                      </span>
+                    </div>
                   </div>
-                  <div class="irrigaosol-testimonial1">
-                    <img
-                      alt="profile"
-                      src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE0fHxwb3J0cmFpdHxlbnwwfHx8fDE2MjYzNzg5NzI&amp;ixlib=rb-1.2.1&amp;w=200"
-                      class="irrigaosol-image1"
-                    />
-                    <span class="irrigaosol-text1"><span>pleno</span></span>
+                  <div class="ultima-manutencao-side2">
+                    <div class="ultima-manutencao-testimonial4">
+                      <span class="ultima-manutencao-text09">
+                        <span>John Doe</span>
+                      </span>
+                      <span class="ultima-manutencao-text10">
+                        <span>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. In lorem lorem, malesuada in metus vitae,
+                          scelerisque accumsan ipsum.
+                        </span>
+                      </span>
+                    </div>
+                    <div class="ultima-manutencao-testimonial5">
+                      <span class="ultima-manutencao-text11">
+                        <span>John Doe</span>
+                      </span>
+                      <span class="ultima-manutencao-text12">
+                        <span>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. In lorem lorem, malesuada in metus vitae,
+                          scelerisque accumsan ipsum.
+                        </span>
+                      </span>
+                    </div>
+                    <div class="ultima-manutencao-testimonial6">
+                      <span class="ultima-manutencao-text13">
+                        <span>John Doe</span>
+                      </span>
+                      <span class="ultima-manutencao-text14">
+                        <span>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. In lorem lorem, malesuada in metus vitae,
+                          scelerisque accumsan ipsum.
+                        </span>
+                      </span>
+                    </div>
+                    <div class="ultima-manutencao-testimonial7">
+                      <span class="ultima-manutencao-text15">
+                        <span>John Doe</span>
+                      </span>
+                      <span class="ultima-manutencao-text16">
+                        <span>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. In lorem lorem, malesuada in metus vitae,
+                          scelerisque accumsan ipsum.
+                        </span>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="solo-testimonial-card solo-root-class-name3">
-              <div class="solo-testimonial">
-                <img
-                  alt="profile"
-                  src="https://images.unsplash.com/photo-1542909192-2f2241a99c9d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDV8fHBvcnRyYWl0JTIwYnd8ZW58MHx8fHwxNjI2NDUyMjQw&amp;ixlib=rb-1.2.1&amp;h=1200"
-                  class="solo-image"
-                />
-                <span class="solo-text"><span>ALCALINO</span></span>
-              </div>
-              <div class="solo-testimonial1">
-                <img
-                  alt="profile"
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixid=Mnw5MTMyMXwwfDF8c2VhcmNofDE0fHxwb3J0cmFpdHxlbnwwfHx8fDE2MjYzNzg5NzI&amp;ixlib=rb-1.2.1&amp;w=200"
-                  class="solo-image1"
-                />
-                <span class="solo-text1"><span>BEM DRENADO</span></span>
+            <div class="manutencao-container6">
+              <div
+                class="historicomanut-testimonial-card historicomanut-root-class-name"
+              >
+                <h1 class="historicomanut-text"><span>Heading</span></h1>
+                <div class="historicomanut-main-testimonial">
+                  <div class="historicomanut-testimonial">
+                    <span class="historicomanut-text01">
+                      <span>John Doe</span>
+                    </span>
+                    <span class="historicomanut-text02">
+                      <span>date</span>
+                    </span>
+                  </div>
+                  <div class="historicomanut-testimonial1">
+                    <span class="historicomanut-text03">
+                      <span>John Doe</span>
+                    </span>
+                    <span class="historicomanut-text04">
+                      <span>date</span>
+                    </span>
+                  </div>
+                  <div class="historicomanut-testimonial2">
+                    <span class="historicomanut-text05">
+                      <span>John Doe</span>
+                    </span>
+                    <span class="historicomanut-text06">
+                      <span>date</span>
+                    </span>
+                  </div>
+                  <div class="historicomanut-testimonial3">
+                    <span class="historicomanut-text07">
+                      <span>John Doe</span>
+                    </span>
+                    <span class="historicomanut-text08">
+                      <span>date</span>
+                    </span>
+                  </div>
+                  <div class="historicomanut-testimonial4">
+                    <span class="historicomanut-text09">
+                      <span>John Doe</span>
+                    </span>
+                    <span class="historicomanut-text10">
+                      <span>date</span>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+  </div>
+
+
+      {% endblock %}
     <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-  </body>
-</html>
+

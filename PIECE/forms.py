@@ -1,7 +1,7 @@
 # forms.py
 
 from django import forms
-from .models import Especies, Plantas, Minerais,Estacao,Solo,PH,Irrigacao,ExposicaoSolar,EspeciesMinerais,User
+from .models import Especies, Minerais,Estacao,Solo,PH,Irrigacao,ExposicaoSolar,EspeciesMinerais,User,Manutencao,Plantas
 from django.contrib.auth.forms import UserCreationForm
 
 class RegistrationForm(UserCreationForm):
@@ -27,11 +27,6 @@ class EspeciesForm(forms.ModelForm):
             'imagem_especie',
             'imagem_fruta',
         )
-
-class PlantasForm(forms.ModelForm):
-    class Meta:
-        model = Plantas
-        fields = '__all__'
 
 class MineraisForm(forms.ModelForm):
     class Meta:
@@ -85,3 +80,26 @@ class CadastroEspecieMineralForm(forms.ModelForm):
             'mineral',
             'quantidade',
         )
+class ManutencaoForm(forms.ModelForm):
+    class Meta:
+        model = Manutencao
+        fields = ['dt_ultima_fertilizacao', 'ultima_medicao_ph', 'dt_ultima_poda','ultimo_ph','solo_atual','exposicao_solar_atual']
+        widgets = {
+            'dt_ultima_fertilizacao': forms.DateInput(attrs={'class': 'input', 'placeholder': 'Data da última fertilização'}),
+            'ultima_medicao_ph': forms.DateInput(attrs={'class': 'input', 'placeholder': 'Data da última medição de pH'}),
+            'dt_ultima_poda': forms.DateInput(attrs={'class': 'input', 'placeholder': 'Data da última poda'}),
+        }
+        
+class PlantasForm(forms.ModelForm):
+    class Meta:
+        model = Plantas
+        fields = '__all__'
+        widgets = {
+            'dt_plantio': forms.DateInput(attrs={'class': 'input', 'placeholder': 'Data de Plantio'}),
+            }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)  # obtém o usuário passado como argumento
+        super().__init__(*args, **kwargs)
+        if user:
+            self.fields['usuario'].initial = user  # define o usuário como valor inicial do campo

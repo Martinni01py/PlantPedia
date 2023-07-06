@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}<title>Minhas Plantas</title>{% endblock %}
+{% block main %}
+  <main class="homepage-container">
+        <div class="homepage-inicio">
+          <div class="homepage-plantas">
+            {% for plantas in plantas %}
+            <a href="{% url 'perfil_planta' pk=plantas.id %}">
+            <div
+              class="plantas-card-gallery-card plantas-card-root-class-name1"
+            >
+              <img
+                alt={{ plantas.especie.nome }}
+                src={{ plantas.especie.imagem_especie.url }}
+                class="plantas-card-image"
+              />
+              <h2 class="plantas-card-text"><span>{{ plantas.especie.nome }}</span></h2>
+              <span class="plantas-card-text1">
+                <span>{{ plantas.especie.nome_cientifico }}</span>
+              </span>
+            </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+      </main>{% endblock %}
+  <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block title %}<title>Cadastrar Planta</title>{% endblock %}
+{% block main %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" data-tag="font"/>
+      <main class="homepage-container">
+        <div class="homepage-formulariopagina">
+          <div class="homepage-formulario">
+            <pre>
+            </pre>
+            <pre>
+            </pre>
+            <pre>
+            </pre>
+            <form class="homepage-form alert alert-info " method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="hidden" name="usuario" id="id_usuario" value={{ user.id }}>
+              <!-- Form Name -->
+              <legend>Cadastrar Planta</legend>
+              
+              <!-- Text input-->
+              <div class="form-group row">
+                  <label class="col-md-6 control-label" for="id_especie">Especie</label>
+                  <label class="col-md-6 control-label" for="dt_plantio">Data de Plantio</label>
+
+                  <label class="col-md-6">
+                    <select id="id_especie" name="especie" class="form-control">
+                      <option value=""></option>
+                      {% for especie in especies %}
+                      <option value="{{ especie.id }}">{{ especie.nome }}</option>
+                      {% endfor %}
+                    </select>        </label>          
+                
+                    <label class="col-md-6">
+                      <input id="id_dt_plantio" type ='date' name="dt_plantio" class="form-control">
+                    </input></label>
+                    </div>
+              
+                    <pre>  </pre>
+              <div class="form-group row">
+                <label class="col-md-6 control-label" for="id_acidez_solo">Acidez do solo</label>
+                <div class="col-md-6">
+                  <select id="id_acidez_solo" name="acidez_solo" class="form-control">
+                    <option value=""></option>
+                    {% for PH in phs %}
+                    <option value="{{ PH.id }}">{{ PH.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              
+                <pre> </pre>
+              <!-- Select Basic -->
+              
+                <label class="col-md-6 control-label" for="id_solo">Tipo de Solo</label>
+                <div class="col-md-6">
+                  <select id="id_solo" name="solo" class="form-control">
+                    <option value=""></option>
+                    {% for Solo in solos %}
+                    <option value="{{ Solo.id }}">{{ Solo.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <pre> </pre>
+              
+              <!-- Select Basic -->
+              <div class="form-group row">
+                <label class="col-md-6 control-label" for="id_estacao_producao">ultima estação de produção</label>
+                <div class="col-md-6">
+                  <select id="id_estacao_producao" name="estacao_producao" class="form-control">
+                    <option value=""></option>
+                    {% for estacao in estacoes %}
+                    <option value="{{ estacao.id }}">{{ estacao.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              
+                <pre> </pre>
+              <!-- Select Basic -->
+              
+                <label class="col-md-6 control-label" for="id_exposicao_solar_atual">Exposção Solar</label>
+                <div class="col-md-6">
+                  <select id="id_exposicao_solar_atual" name="exposicao_solar_atual" class="form-control">
+                    <option value=""></option>
+                    {% for ExposicaoSolar in exposicaoSolar %}
+                    <option value="{{ ExposicaoSolar.id }}">{{ ExposicaoSolar.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <pre> </pre>
+              <!-- Select Basic -->
+              <div class="form-group row">
+                <label class="col-md-6 control-label" for="id_irrigacao">Irrigação</label>
+                <div class="col-md-6">
+                  <select id="id_irrigacao" name="irrigacao" class="form-control">
+                    <option value=""></option>
+                    {% for Irrigacao in irrigacoes %}
+                    <option value="{{ Irrigacao.id }}">{{ Irrigacao.nome }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              
+              
+              <pre> </pre>
+                <label class="col-md-4 row-md-6 control-label" for="Registrar"></label>
+                <div class="col-md-4 row-md-6">
+                  <button id="Registrar" name="Registrar" type="submit" class="btn btn-primary">Registrar</button>
+                </div>
+              </div>
+              
+              
+            
+              </form>
+          </div>  
+        </div>
+      </main>
+      {% endblock %}
+
