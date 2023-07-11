@@ -11,17 +11,17 @@ function marcarBotao(btnId) {
   $('.additional-div').hide();
 
   // Verifique qual botão foi clicado
-  if (btnId === 1) {
+  if (btnId === 4) {
     // Exiba a div "Info"
     $('#info-div').show();
   } else if (btnId === 2) {
     // Exiba a div "manutencao-div"
     $('#manutencao-div').show();
   } else if (btnId === 3) {
-    // Exiba a div "historico-div"
-    $('#historico-div').show();
+    // Exiba a div "producao-div"
+    $('#producao-div').show();
   }
-  else if (btnId === 4) {
+  else if (btnId === 1) {
     // Exiba a div "status-div"
     $('#status-div').show();
   }

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
+
 ##Cadastros######
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -109,7 +110,7 @@ class Manutencao(models.Model):
     dt_ultima_fertilizacao = models.DateField()
     ultima_medicao_ph = models.DateField()
     dt_ultima_poda = models.DateField()
-    ultimo_ph= models.ForeignKey(PH, on_delete=models.CASCADE)
+    ultimo_ph = models.ForeignKey(PH, on_delete=models.CASCADE)
     solo_atual = models.ForeignKey(Solo, on_delete=models.CASCADE)
     exposicao_solar_atual = models.ForeignKey(ExposicaoSolar, on_delete=models.CASCADE)
 
@@ -120,16 +121,23 @@ class Manutencao(models.Model):
 class Producao(models.Model):
     planta = models.ForeignKey(Plantas, on_delete=models.CASCADE)
     dt_ultima_producao = models.DateField()
-    frequencia_producao = models.IntegerField()
+    estacao_ultima_producao = models.ForeignKey(Estacao, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f"Producao de {self.planta}"
-
-class Historico(models.Model):
+##########################################
+#### ocioso ###############################
+class HistoricoDatas(models.Model):
     planta = models.ForeignKey(Plantas, on_delete=models.CASCADE)
-    dt_evento = models.DateField()
-    informacoes = models.TextField()
+    dt_ultima_fertilizacao = models.DateField(null=True, blank=True)
+    ultima_medicao_ph = models.DateField(null=True, blank=True)
+    dt_ultima_poda = models.DateField(null=True, blank=True)
+    dt_ultima_producao = models.DateField(null=True, blank=True)
+    ultimo_ph= models.ForeignKey(PH, on_delete=models.CASCADE, null=True, blank=True)
+    Solo = models.ForeignKey(Solo, on_delete=models.CASCADE, null=True, blank=True)
+    exposicao_solar = models.ForeignKey(ExposicaoSolar, on_delete=models.CASCADE, null=True, blank=True)
+    Estacao = models.ForeignKey(Estacao, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f"Historico de {self.planta} - {self.dt_evento}"
+        return f"Histórico de Datas para {self.planta}"
 ############################################

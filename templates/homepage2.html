@@ -6,7 +6,7 @@
       <nav style="background-color: #2A794A; border-radius:16px; text-color:#0000; padding:10px; margin-top:6px">
         <ul class="nav nav-pills float-right">
           <li class="nav-item">
-            <button id="nav-link-4" onclick="marcarBotao(4)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;">Status</button>
+            <button id="nav-link-4" onclick="marcarBotao(1)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;">Status</button>
           </li>
           <li class="nav-item">
             <button id="nav-link-2" onclick="marcarBotao(2)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;" >Manutenção</button>
@@ -15,7 +15,7 @@
             <button id="nav-link-3" onclick="marcarBotao(3)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;" >Produção</button>
           </li>
           <li class="nav-item">
-            <button id="nav-link-1" onclick="marcarBotao(1)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;" >Info</button>
+            <button id="nav-link-1" onclick="marcarBotao(4)" class="nav-link botao" style="background-color: #2A794A; color:#0D1611;" >Info</button>
           </li>
         </ul>
       </nav>
@@ -247,6 +247,9 @@
           <div class="manutencao-container3">
             <div class="manutencao-container4">
               <div class="manutencao-container5">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input type="hidden" name="planta" id="id_planta" value={{ planta.id }}>
                 <div
                   class="cadastrar-manutencao-testimonial-card cadastrar-manutencao-root-class-name"
                 >
@@ -256,40 +259,36 @@
                   <div class="cadastrar-manutencao-container">
                     <div class="cadastrar-manutencao-container1">
                       <div class="cadastrar-manutencao-main-testimonial">
-                        <label class="cadastrar-manutencao-text1">
+                        <label class="cadastrar-manutencao-text1" for="id_dt_ultima_fertilizacao">
                           <span>Data da última fertilização</span>
                         </label>
                         <input
+                          id="id_dt_ultima_fertilizacao"
                           type="date"
                           name="dt_ultima_fertilizacao"
                           placeholder="Selecione a data"
                           class="input"
+                          required
                         />
                         
-                        <label class="cadastrar-manutencao-text1">
+                        <label class="cadastrar-manutencao-text1" for="id_ultima_medicao_ph">
                           <span>Data da última medição de pH</span>
                         </label>
                         <input
+                          id="id_ultima_medicao_ph"
                           type="date"
                           name="ultima_medicao_ph"
                           placeholder="Selecione a data"
                           class="input"
+                          required
                         />
                         
-                        <label class="cadastrar-manutencao-text1">
-                          <span>Data de plantio</span>
-                        </label>
-                        <input
-                          type="date"
-                          name="dt_plantio"
-                          placeholder="Selecione a data"
-                          class="input"
-                        />
                         
-                        <label class="cadastrar-manutencao-text1">
+                        <label class="cadastrar-manutencao-text1" for="id_dt_ultima_poda">
                           <span>Data da última poda</span>
                         </label>
                         <input
+                          id="id_dt_ultima_poda"
                           type="date"
                           name="dt_ultima_poda"
                           placeholder="Selecione a data"
@@ -298,10 +297,10 @@
                       </div>
                       <div class="cadastrar-manutencao-main-testimonial1">
                         <div class="cadastrar-manutencao-testimonial3">
-                          <label class="cadastrar-manutencao-text4">
+                          <label class="cadastrar-manutencao-text4" for="id_exposicao_solar_atual">
                             <span>Exposicao Solar</span>
                           </label>
-                          <select id="id_exposicao_solar_atual" name="exposicao_solar" class="form-control">
+                          <select id="id_exposicao_solar_atual" name="exposicao_solar_atual" class="form-control">
                             <option value=""></option>
                             {% for ExposicaoSolar in exposicaoSolar %}
                             <option value="{{ ExposicaoSolar.id }}">{{ ExposicaoSolar.nome }}</option>
@@ -311,10 +310,10 @@
             
                         
                         <div class="cadastrar-manutencao-testimonial4">
-                          <label class="cadastrar-manutencao-text5">
+                          <label class="cadastrar-manutencao-text5" for="id_solo_atual">
                             <span>Solo Atual</span>
                           </label>
-                          <select id="id_necessidade_solo" name="necessidade_solo" class="form-control">
+                          <select id="id_solo_atual" name="solo_atual" class="form-control">
                             <option value=""></option>
                             {% for Solo in solos %}
                             <option value="{{ Solo.id }}">{{ Solo.nome }}</option>
@@ -322,10 +321,10 @@
                           </select>
                         </div>
                         <div class="cadastrar-manutencao-testimonial5">
-                          <label class="cadastrar-manutencao-text6">
+                          <label class="cadastrar-manutencao-text6" for="id_ultimo_ph">
                             <span>Ph</span>
                           </label>
-                          <select id="id_ultimo_ph" name="acidez_solo" class="form-control">
+                          <select id="id_ultimo_ph" name="ultimo_ph" class="form-control">
                             <option value=""></option>
                             {% for PH in phs %}
                             <option value="{{ PH.id }}">{{ PH.nome }}</option>
@@ -341,106 +340,37 @@
                     </div>
                   </div>
                 </div>
+              </form>
               </div>
               <div
-                class="ultima-manutencao-testimonial-card ultima-manutencao-root-class-name2"
+                class="ultima-manutencao-root-class-name2"
               >
-                <h1 class="ultima-manutencao-text"><span>Heading</span></h1>
                 <div class="ultima-manutencao-ultman">
                   <div class="ultima-manutencao-side1">
+                    <h4 class="ultima-manutencao-text"><span>historico de Podas</span></h4>
+                    {% for manutencao in manutencao %}
                     <div class="ultima-manutencao-testimonial">
                       <span class="ultima-manutencao-text01">
-                        <span>John Doe</span>
-                      </span>
+                        <span>Data</span>
                       <span class="ultima-manutencao-text02">
-                        <span>date</span>
+                        <span>{{ manutencao.dt_ultima_poda|date:"d/m/Y"}}</span>
                       </span>
                     </div>
-                    <div class="ultima-manutencao-testimonial1">
-                      <span class="ultima-manutencao-text03">
-                        <span>John Doe</span>
-                      </span>
-                      <span class="ultima-manutencao-text04">
-                        <span>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. In lorem lorem, malesuada in metus vitae,
-                          scelerisque accumsan ipsum.
-                        </span>
-                      </span>
-                    </div>
-                    <div class="ultima-manutencao-testimonial2">
-                      <span class="ultima-manutencao-text05">
-                        <span>John Doe</span>
-                      </span>
-                      <span class="ultima-manutencao-text06">
-                        <span>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. In lorem lorem, malesuada in metus vitae,
-                          scelerisque accumsan ipsum.
-                        </span>
-                      </span>
-                    </div>
-                    <div class="ultima-manutencao-testimonial3">
-                      <span class="ultima-manutencao-text07">
-                        <span>John Doe</span>
-                      </span>
-                      <span class="ultima-manutencao-text08">
-                        <span>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. In lorem lorem, malesuada in metus vitae,
-                          scelerisque accumsan ipsum.
-                        </span>
-                      </span>
-                    </div>
+                    {% endfor %}
+
                   </div>
                   <div class="ultima-manutencao-side2">
-                    <div class="ultima-manutencao-testimonial4">
-                      <span class="ultima-manutencao-text09">
-                        <span>John Doe</span>
-                      </span>
-                      <span class="ultima-manutencao-text10">
-                        <span>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. In lorem lorem, malesuada in metus vitae,
-                          scelerisque accumsan ipsum.
-                        </span>
-                      </span>
-                    </div>
-                    <div class="ultima-manutencao-testimonial5">
-                      <span class="ultima-manutencao-text11">
-                        <span>John Doe</span>
-                      </span>
-                      <span class="ultima-manutencao-text12">
-                        <span>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. In lorem lorem, malesuada in metus vitae,
-                          scelerisque accumsan ipsum.
-                        </span>
-                      </span>
-                    </div>
-                    <div class="ultima-manutencao-testimonial6">
-                      <span class="ultima-manutencao-text13">
-                        <span>John Doe</span>
-                      </span>
-                      <span class="ultima-manutencao-text14">
-                        <span>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. In lorem lorem, malesuada in metus vitae,
-                          scelerisque accumsan ipsum.
-                        </span>
-                      </span>
-                    </div>
-                    <div class="ultima-manutencao-testimonial7">
-                      <span class="ultima-manutencao-text15">
-                        <span>John Doe</span>
-                      </span>
-                      <span class="ultima-manutencao-text16">
-                        <span>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. In lorem lorem, malesuada in metus vitae,
-                          scelerisque accumsan ipsum.
-                        </span>
-                      </span>
+                    <h4 class="ultima-manutencao-text"><span>historico de Fertilizações</span></h4>
+                      {% for manutencao in manutencao %}
+                  <div class="ultima-manutencao-testimonial">
+                    <span>
+                    <span class="historicomanut-text01"> 
+                    <span>Data</span>
+                    <span class="historicomanut-text02">
+                      <span>{{ manutencao.dt_ultima_fertilizacao|date:"d/m/Y"}}</span>
+                    </span>
+                  </div>
+                  {% endfor %}
                     </div>
                   </div>
                 </div>
@@ -450,59 +380,145 @@
               <div
                 class="historicomanut-testimonial-card historicomanut-root-class-name"
               >
-                <h1 class="historicomanut-text"><span>Heading</span></h1>
+                <h1 class="historicomanut-text"><span>Historico PH</span></h1>
                 <div class="historicomanut-main-testimonial">
+                  {% for manutencao in manutencao %}
                   <div class="historicomanut-testimonial">
-                    <span class="historicomanut-text01">
-                      <span>John Doe</span>
-                    </span>
+                    <span>
+                      
+                    <span class="historicomanut-text01"> 
+                    <span>{{ manutencao.ultima_medicao_ph|date:"d/m/Y"}}</span>
                     <span class="historicomanut-text02">
-                      <span>date</span>
+                      <span>{{ manutencao.ultimo_ph }}</span>
                     </span>
                   </div>
-                  <div class="historicomanut-testimonial1">
-                    <span class="historicomanut-text03">
-                      <span>John Doe</span>
-                    </span>
-                    <span class="historicomanut-text04">
-                      <span>date</span>
-                    </span>
-                  </div>
-                  <div class="historicomanut-testimonial2">
-                    <span class="historicomanut-text05">
-                      <span>John Doe</span>
-                    </span>
-                    <span class="historicomanut-text06">
-                      <span>date</span>
-                    </span>
-                  </div>
-                  <div class="historicomanut-testimonial3">
-                    <span class="historicomanut-text07">
-                      <span>John Doe</span>
-                    </span>
-                    <span class="historicomanut-text08">
-                      <span>date</span>
-                    </span>
-                  </div>
-                  <div class="historicomanut-testimonial4">
-                    <span class="historicomanut-text09">
-                      <span>John Doe</span>
-                    </span>
-                    <span class="historicomanut-text10">
-                      <span>date</span>
-                    </span>
-                  </div>
+                  {% endfor %}
+
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    
+    <div id="producao-div" name='producao' class="manutencao-container additional-div hide" style="display: none;">
+      <div data-thq="thq-navbar-nav" data-role="Nav" class="manutencao-planta">
+        <div class="manutencao-testimonial">
+          <div class="manutencao-container3">
+            <div class="manutencao-container4">
+              <div class="manutencao-container5">
+                <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input type="hidden" name="planta" id="id_planta" value={{ planta.id }}>
+                  <div
+                    class="cadastrar-manutencao-testimonial-card cadastrar-manutencao-root-class-name"
+                  >
+                    <h1 class="cadastrar-manutencao-text">
+                      <span>Cadastrar Produção</span>
+                    </h1>
+                    <div class="cadastrar-manutencao-container">
+                      <div class="cadastrar-manutencao-container1">
+                        <div class="cadastrar-manutencao-main-testimonial">
+                          <label class="cadastrar-manutencao-text1">
+                            <span>Data da ultima producao</span>
+                          </label>
+                          <input
+                            id="id_dt_ultima_producao"
+                            type="date"
+                            name="dt_ultima_producao"
+                            placeholder="Selecione a data"
+                            class="input"
+                          />
+                          
+                          <label class="cadastrar-manutencao-text1" for="id_estacao_ultima_producao">estação de produção</label>
+                          
+                            <select id="id_estacao_ultima_producao" name="estacao_ultima_producao" class="form-control">
+                              {% for estacao in estacoes %}
+                              {% if estacao.id <= 4 %}
+                              <option value="{{ estacao.id }}">{{ estacao.nome }}</option>
+                              {% endif %}
+                              {% endfor %}
+                            </select>
+                          
+                     
+                        </div>
+                        <div class="cadastrar-manutencao-main-testimonial1">
+                          <pre> </pre>
+                            <label class="col-md-4 row-md-6 control-label" for="Registrar"></label>
+                              <div class="col-md-4 row-md-6">
+                              <button id="Registrar" name="Registrar" type="submit" class="btn btn-primary">Registrar</button>
+                              </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="ultima-manutencao-root-class-name2"
+              >
+                <div class="ultima-manutencao-ultman">
+                  <div class="ultima-manutencao-side1">
+                    <h4 class="ultima-manutencao-text"><span>historico de Podas</span></h4>
+                    {% for historico in historicos %}
+                    <div class="ultima-manutencao-testimonial">
+                      <span class="ultima-manutencao-text01">
+                        <span>Data</span>
+                      <span class="ultima-manutencao-text02">
+                        <span>{{ historico.dt_ultima_poda|date:"d/m/Y"}}</span>
+                      </span>
+                    </div>
+                    {% endfor %}
+
+                  </div>
+                  <div class="ultima-manutencao-side2">
+                    <h4 class="ultima-manutencao-text"><span>historico de Fertilizações</span></h4>
+                      {% for historico in historicos %}
+                  <div class="ultima-manutencao-testimonial">
+                    <span>
+                    <span class="historicomanut-text01"> 
+                    <span>Data</span>
+                    <span class="historicomanut-text02">
+                      <span>{{ historico.dt_ultima_poda|date:"d/m/Y"}}</span>
+                    </span>
+                  </div>
+                  {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="manutencao-container6">
+              <div
+                class="historicomanut-testimonial-card historicomanut-root-class-name"
+              >
+                <h1 class="historicomanut-text"><span>Historico P/Estação</span></h1>
+                <div class="historicomanut-main-testimonial">
+                  {% for producao in producao %}
+                  <div class="historicomanut-testimonial">
+                    <span>
+                    <img src="{{ producao.estacao_ultima_producao.icon_estacao.url }}" style="height: 64px; width: 64px;" alt="Ícone" />
+                    <span class="historicomanut-text01">{{ producao.dt_ultima_producao|date:"d/m/Y"}}</span>
+                    </span>
+                    
+                  </div>
+                  {% endfor %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
     </div>
-
   </div>
+    
 
 
-      {% endblock %}
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+ 
+  
+
+{% endblock %}
+   
 

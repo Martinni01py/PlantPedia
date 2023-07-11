@@ -17,7 +17,7 @@ urlpatterns = [
     path('espmin', views.Cadminesp, name="Cadastro de Espmin"),     
     path('irriga/', views.Cadirriga, name="Cadastro de irrigacao"),
     path('perfil_especie/<int:pk>/', views.perfil_especie, name='perfil_especie'),
-    path('teste/<int:pk>/', views.perfil_planta, name='perfil_planta'),
+    path('teste/<int:pk>/', views.perfil_planta, name='perfil planta'),
     path('Plantas', views.galeria_plantas, name='Plantas'),
     ]
 

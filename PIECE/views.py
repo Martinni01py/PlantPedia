@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login
-from .forms import EspeciesForm, MineraisForm,EstacaoForm,PHform,soloForm,IrrigacaoForm,SolForm,CadastroEspecieMineralForm, RegistrationForm, LoginForm,MineraisForm,PlantasForm
-from .models import Especies, EspeciesMinerais,Estacao,ExposicaoSolar,Solo,Irrigacao,PH,Minerais,Plantas
+from django.db import transaction
+from .forms import EspeciesForm, MineraisForm,EstacaoForm,PHform,soloForm,IrrigacaoForm,SolForm,CadastroEspecieMineralForm, RegistrationForm, LoginForm,MineraisForm,PlantasForm,ManutencaoForm,ProducaoForm
+from .models import Especies, EspeciesMinerais,Estacao,ExposicaoSolar,Solo,Irrigacao,PH,Minerais,Plantas,HistoricoDatas,Producao,Manutencao
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from datetime import datetime
@@ -136,6 +137,7 @@ def Cadminesp(request):
 
     
     return render(request, 'cadastroespecieminerio.html', {'especies': especies, 'minerais': minerais,'theme': theme, 'form': form })
+
 ##perfil espécie#
 def perfil_especie(request, pk):
     especie = get_object_or_404(Especies, pk=pk)
@@ -154,9 +156,26 @@ def perfil_planta(request, pk):
     exposicaoSolar = ExposicaoSolar.objects.all()
     irrigacoes = Irrigacao.objects.all()
     phs = PH.objects.all()
+    historicos = HistoricoDatas.objects.all()
+    producao = Producao.objects.all()
+    manutencao = Manutencao.objects.all()
+
+    
+    if request.method == 'POST':
+        form1 = ManutencaoForm(request.POST, request.FILES)
+        form2 = ProducaoForm(request.POST, request.FILES)
+        if form1.is_valid():
+            form1.save(commit=True)  # Adicionando o argumento commit=True
+
+        elif form2.is_valid():
+            form2.save(commit=True)  # Adicionando o argumento commit=True
+            
+    else:
+        form1 = ManutencaoForm()
+        form2 = ProducaoForm()
     
     theme = Theme()
-    return render(request, 'homepage2.html', {'planta': planta,'phs': phs, 'solos': solos, 'exposicaoSolar': exposicaoSolar, 'irrigacoes': irrigacoes, 'estacoes': estacoes, 'theme': theme, 'especie': especie, 'minerais': minerais})
+    return render(request, 'homepage2.html', {'planta': planta,'phs': phs, 'solos': solos, 'exposicaoSolar': exposicaoSolar, 'irrigacoes': irrigacoes, 'estacoes': estacoes, 'theme': theme, 'especie': especie, 'minerais': minerais, 'historicos': historicos,'manutencao':manutencao,'producao':producao, 'form1': form1, 'form2': form2})
 
 ##galeria plantas
 @login_required
